@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--==== Memberikan icon pada tab (yang paling atas) ====-->
+    <link rel="shortcut icon" href="image/bxs-coffee.svg">
+
+    <!-- ====================== Boxicons =====================-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--=============== Main CSS =================-->
+    <link rel="stylesheet" href="coffeshop.css">
+    <title>Coffee Shop</title>
+
+</head>
+
+<body>
+    <!-- ====================== Loader ==================== -->
+    <div class="load" id="load">
+        <img src="image/loading_coffee2.gif" alt="" class="load_gif">
+    </div>
+
+
+    <!-- ===================== Header ====================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav_logo">
+                <img src="image/coffee_beanss.png" alt="" class="nav_logo-image"> Coffee
+            </a>
+
+            <div class="nav_menu" id="nav-menu">
+                <ul class="nav_list">
+                    <li class="nav_item">
+                        <a href="#home" class="nav_link active-link">Home</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#products" class="nav_link">Products</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#premium" class="nav_link">Premium</a>
+                    </li>
+                    <li class="nav_item">
+                        <a href="#blog" class="nav_link">Blog</a>
+                    </li>
+                </ul>
+
+                <div class="nav_close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                </div>
+            </div>
+
+            <!-- ======= Toggle button =========== -->
+            <div class="nav_toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- ======================== Main ===================== -->
+    <main>
+        <!-- =================== Home ===================== -->
+        <!-- Memakai section jika terdapat id nya -->
+        <section class="home grid" id="home">
+            <div class="home_container">
+                <div class="home_content container">
+                    <h1 class="home_title">Choose Your Favorite Coffee And Enjoy<span>.</span></h1>
+                    <p class="home_description">Buy the best and delicious coffee</p>
+
+                    <div class="home_data">
+                        <div class="home_data-group">
+                            <h1 class="home_data-number">110K</h1>
+                            <h3 class="home_data-title">Testimonials</h3>
+                            <p class="home_data-description">Testimonials from various customers who trust us</p>
+                        </div>
+
+                        <div class="home_data-group">
+                            <h1 class="home_data-number">370+</h1>
+                            <h3 class="home_data-title">Exclusive Product</h3>
+                            <p class="home_data-description">Premium preparation with quality ingredients.</p>
+                        </div>
+                    </div>
+
+                    <a href="#specialty">
+                        <img src="image/scroll1.png" alt="" class="home_scroll">
+                    </a>
+                </div>
+            </div>
+
+            <img src="image/coffee.jpg" alt="" class="home_image">
+        </section>
+
+        <!-- ================= Especiality ================= -->
+        <div class="specialty section" id="specialty">
+            <div class="specialty_container container">
+                <div class="specialty_box">
+                    <h2 class="section_title">
+                        Specialty coffees that make you happy and cheer you up!
+                    </h2>
+
+                    <!-- Jika class button diberikan ke div maka warna background (hitam) akan memiliki tinggi dan lebar sesuai container dari parentnya => specialty box -->
+                    <div>
+                        <a href="#" class="button specialty_button">See More</a>
+                    </div>
+                </div>
+
+                <div class="specialty_category">
+                    <div class="specialty_group specialty_line">
+                        <img src="image/kopibar.png" alt="" class="specialty_img">
+                        <h3 class="specialty_title">Selected Coffee</h3>
+                        <p class="specialty_description">We select the best premium coffee, for a true taste.</p>
+                    </div>
+
+                    <div class="specialty_group cookies">
+                        <img src="image/Cookiesbar.png" alt="" class="specialty_img">
+                        <h3 class="specialty_title">Delicious Cookies</h3>
+                        <p class="specialty_description">Enjoy your coffee with some hot cookies.</p>
+                        <!-- Membuat garis khusus untuk cookies -->
+                        <div class="specialty_line-cookies"></div>
+                    </div>
+
+                    <div class="specialty_group coffee_togo">
+                        <img src="image/coffee_togo1.png" alt="" class="specialty_img">
+                        <h3 class="specialty_title">Enjoy at Home</h3>
+                        <p class="specialty_description">Enjoy the best coffee in the comfort of your home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================== Products =============== -->
+        <!-- data filter merupakan dari mixitup (google) -->
+        <section class="products section" id="products">
+            <div class="products_container container">
+                <h2 class="section_title">Choose our delicious and best products</h2>
+
+                <ul class="products_filters">
+                    <li class="products_item products_line active-product" data-filter=".delicacies">
+                        <h3 class="products_title">New Delicacies</h3>
+                        <span class="products_stock">3 Products</span>
+                    </li>
+
+                    <li class="products_item products_line" data-filter=".coffee">
+                        <h3 class="products_title">Hot Coffee</h3>
+                        <span class="products_stock">4 Products</span>
+                    </li>
+
+                    <li class="products_item" data-filter=".cake">
+                        <h3 class="products_title">Cakes And Delicacies</h3>
+                        <span class="products_stock">5 Products</span>
+                    </li>
+                </ul>
+
+                <div class="products_content grid">
+                    <!-- ======== Delicacies ========== -->
+                    <!-- article digunakan jika ia merupakan self contained dan anakannya berupa h1-h6, p dan juga article itu jumlahnya banyak -->
+                    <article class="products_card delicacies">
+                        <div class="products_shape">
+                            <img src="image/cookies2.png" alt="" class="products_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">7K</h2>
+                            <h3 class="products_name">Cookies</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card delicacies">
+                        <div class="products_shape tofu shape_fried-tofu">
+                            <img src="image/tahu.png" alt="" class="products_img fried-tofu_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">5K</h2>
+                            <h3 class="products_name">fried tofu</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card delicacies">
+                        <div class="products_shape shape_fried-tempeh">
+                            <img src="image/Tempe.png" alt="" class="products_img fried-tempeh_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">5K</h2>
+                            <h3 class="products_name">Fried Tempeh</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+                    <!-- ========== Coffee ============ -->
+                    <article class="products_card coffee">
+                        <div class="products_shape shape_black-coffee">
+                            <img src="image/kopi_hitam.png" alt="" class="products_img black-coffee_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">8K</h2>
+                            <h3 class="products_name">Black Coffee</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card coffee">
+                        <div class="products_shape shape_coffee-milk">
+                            <img src="image/kopi_susu2.png" alt="" class="products_img coffee-milk_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">13K</h2>
+                            <h3 class="products_name">Milk Coffee</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card coffee">
+                        <div class="products_shape shape_mocha-coffee">
+                            <img src="image/moka_kopi.png" alt="" class="products_img mocha-coffee_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">20K</h2>
+                            <h3 class="products_name">Mocha Coffee</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card coffee">
+                        <div class="products_shape shape_caramel-macchiato">
+                            <img src="image/caramel_macchiato.png" alt="" class="products_img caramel-macchiato_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">25K</h2>
+                            <h3 class="products_name">Caramel Macchiato</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- ============ Cake ============ -->
+                    <article class="products_card cake">
+                        <div class="products_shape shape_cheese-cake">
+                            <img src="image/chesse_cake.png" alt="" class="products_img cheese-cake_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">20K</h2>
+                            <h3 class="products_name">Cheese Cake</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card cake">
+                        <div class="products_shape shape_chocolate-cake">
+                            <img src="image/chocolate_cake.png" alt="" class="products_img chocolate-cake_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">20K</h2>
+                            <h3 class="products_name">Chocolate Cake</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card cake">
+                        <div class="products_shape shape_bika-ambon">
+                            <img src="image/bika_ambon.png" alt="" class="products_img bika-ambon_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">8K</h2>
+                            <h3 class="products_name">Bika Ambon</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card cake">
+                        <div class="products_shape shape_lapis-legit">
+                            <img src="image/lapis_legit.png" alt="" class="products_img lapis-legit_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">6K</h2>
+                            <h3 class="products_name">Lapis Legit</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="products_card cake">
+                        <div class="products_shape shape_kue-putu">
+                            <img src="image/kue_putu.png" alt="" class="products_img kue-putu_img">
+                        </div>
+
+                        <div class="products_data">
+                            <h2 class="products_price">3K</h2>
+                            <h3 class="products_name">Putu Bambu</h3>
+
+                            <button class="button products_button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================== Quality ==================== -->
+        <section class="quality section" id="premium">
+            <div class="quality_container container">
+                <h2 class="section_title">We offer a premium and better quality preparation just for you!</h2>
+
+
+                <div class="quality_content grid">
+                    <div class="quality_img">
+                        <img src="image/quality1.jpg" alt="" class="quality_img-big">
+                        <img src="image/quality1_small.jpg" alt="" class="quality_img-small">
+                    </div>
+
+                    <div class="quality_data">
+                        <h1 class="quality_title">Premium Coffee</h1>
+                        <h2 class="quality_price">179K</h2>
+                        <span class="quality_special">Especial Price</span>
+                        <p class="quality_description">
+                            We are delighted with our coffee. That's why you get the best premium coffee plus coffee
+                            powder and the kettle made of resistant materials that you see in the image, for a special
+                            price.
+                        </p>
+
+                        <div class="quality_buttons">
+                            <button class="button">Buy Now!</button>
+
+                            <a href="#" class="quality_button">See More
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== Logo ===================== -->
+        <section class="logo section">
+            <div class="logo_container container grid">
+                <img src="image/logo_coffee1.png" alt="" class="logo_img">
+                <img src="image/logo_coffee2.png" alt="" class="logo_img">
+                <img src="image/logo_coffee3.png" alt="" class="logo_img">
+                <img src="image/logo_coffee4.png" alt="" class="logo_img">
+                <img src="image/logo_coffee5.png" alt="" class="logo_img">
+            </div>
+        </section>
+
+        <!-- ==================== Blog ====================== -->
+        <section class="blog section" id="blog">
+            <div class="blog_container container">
+                <h2 class="section_title">
+                    Our Blogs Coffee with trending topic for this week
+                </h2>
+
+                <div class="blog_content grid">
+                    <article class="blog_card">
+                        <div class="blog_images">
+                            <img src="image/coffeee_blog.jpg" alt="" class="blog_img">
+                            <a href="#" class="blog_button">
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <div class="blog_data">
+                            <h2 class="blog_title">
+                                10 Coffee Recommendations
+                            </h2>
+                            <p class="blog_description">
+                                The blogs about coffee will help you a lot about how it is prepared, its waiting time,
+                                for a good quality cofee.
+                            </p>
+                        </div>
+
+                        <div class="blog_footer">
+                            <div class="blog_reaction">
+                                <i class='bx bx-message-dots'></i>
+                                <span>84</span>
+                            </div>
+
+                            <div class="blog_reaction">
+                                <i class='bx bx-show'></i>
+                                <span>142,7K</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog_card">
+                        <div class="blog_images">
+                            <img src="image/blog_coffee2_edit.jpg" alt="" class="blog_img">
+                            <a href="#" class="blog_button">
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+
+                        <div class="blog_data">
+                            <h2 class="blog_title">
+                                12 Benefits Of Drinking Coffee
+                            </h2>
+                            <p class="blog_description">
+                                The blogs about coffee will help you a lot about how it is prepared, its waiting time,
+                                for a good quality coffee.
+                            </p>
+                        </div>
+
+                        <div class="blog_footer">
+                            <div class="blog_reaction">
+                                <i class='bx bx-message-dots'></i>
+                                <span>26</span>
+                            </div>
+
+                            <div class="blog_reaction">
+                                <i class='bx bx-show'></i>
+                                <span>77,3K</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== Footer =================== -->
+        <!-- Blank untuk membuka tab baru -->
+        <footer class="footer">
+            <div class="footer_container container">
+                <h1 class="footer_title">Coffee<span>.</span></h1>
+
+                <div class="footer_content grid">
+                    <div class="footer_data">
+                        <p class="footer_description">
+                            Subscribe to our newsletter
+                        </p>
+
+                        <div class="footer_newsletter">
+                            <input type="email" placeholder="Your email address" class="footer_input">
+                            <button class="footer_button">
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="footer_data">
+                        <h2 class="footer_subtitle">Address</h2>
+                        <p class="footer_information">
+                            1007 Lestay MS. <br>
+                            Aceh, Medan, Indonesia
+                            <img src="image/indonesia.png" alt="" class="footer_img">
+                        </p>
+                    </div>
+
+                    <div class="footer_data">
+                        <h2 class="footer_subtitle">Contact</h2>
+                        <p class="footer_information">
+                            +62813101234 <br>
+                            habilnasutionx@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="footer_data">
+                        <h2 class="footer_subtitle">Office</h2>
+                        <p class="footer_information">
+                            Everyday <br>
+                            8AM - 11PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer_group">
+                    <ul class="footer_social">
+                        <a href="https://www.instagram.com/" class="footer_social-link" target="_blank">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                        <a href="https://www.facebook.com/" class="footer_social-link" target="_blank">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="https://twitter.com/" class="footer_social-link" target="_blank">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                    </ul>
+                </div>
+
+                <span class="footer_copy">
+                    &#169; Bedimcode. Edited by Noitusanx. All rights reserved
+                </span>
+            </div>
+        </footer>
+
+        <!-- ================== Scroll Up =================== -->
+        <a href="#" class="scroll_up" id="scroll-up">
+            <i class='bx bx-up-arrow-alt'></i>
+        </a>
+    </main>
+
+    <!-- Didapat dari google kemudian diextract dan hasilnya diletakkan di file yang sama pada web yang dibuat -->
+    <!--================ Mixitup Filter ==================== -->
+    <script src="mixitup.min.js"></script>
+
+    <!--================== Main JS ===================  -->
+    <script src="coffeshop.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1214 @@
+/* ================== Google font ====================== */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600&display=swap');
+
+/* =================== Variable CSS ================= */
+/* root untuk keseluruhan */
+:root{
+    --header-height: 3.5rem;
+
+    /* ============= Colors ===========*/
+    /* HSL (hue, saturation, lightness) */
+    --first-color: hsl(36, 72%, 48%);
+    --first-color-alt: hsl(36, 72%, 44%);
+    --black-color: hsl(206, 12%, 12%);
+    --card-color: hsl(0,0%,90%);
+    --title-color: hsl(206, 12%, 12%);
+    --text-color: hsl(206, 4%, 42%);
+    --text-color-light: hsl(206, 4%, 75%);
+    --body-color: hsl(206, 4%, 97%);
+    --container-color: white;
+
+    /* ============ Font & typography ============== */
+    /* Lato didapat dari google fonts */
+    --body-font: 'Lato', sans-serif; 
+    --biggest-font-size: 2.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    /* normal (15,008px), small (13.008px), smaller (12px)*/
+    --normal-font-size: .938rem;
+    --small-font-size: .81rem;
+    --smaller-font-size: .75rem;
+
+    /* ==================== Font weight ==================== */
+    --font-bold: 700;
+
+    /* ================== z-index ========================= */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* root untuk layarnya yang minimal 968px */
+@media screen and (min-width: 968px) {
+    :root {
+    --biggest-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+    }
+}
+
+/* ========================== Base ========================== */
+/* Pada content box jika ditambah padding maka lebarnya akan bertambah besar namun jika border box maka lebar sudah include dengan padding */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Jika smooth maka jika ditekan link maka dia akan scroll secara perlahan namun kalau auto maka dia akan langsung ke tempat yang dituju */
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+}
+
+h1,h2,h3{
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+}
+
+/* Membuat agar tulisannya tidak terlalu berdempetan antara baris satu dengan baris yang lain */
+h1,h2,h3,p{
+    line-height: 140%;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.container{
+    max-width: 1024px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section{
+    padding: 4.5rem 0 2rem;
+}
+
+/* position relative (posisinya dapat dipindah pindahkan dan z-indexnya lebih besar dari yang lain) */
+/* Position relative disini membuat warna orange dikarenakan sebelum section::before diberikan backround-color first color */
+.section_title{
+    position: relative;
+    font-size: var(--h1-font-size);
+    padding-left: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.section_title::before{
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 20px;
+    width: 3px;
+    background-color: var(--first-color);
+}
+
+/* =================== Loading =========================== */
+.load{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0%;
+    background-color: rgb(251, 243, 203);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+}
+
+
+/* ============== Header & Nav ================== */
+.header{
+    width: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+}
+
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_logo,
+.nav_toggle{
+    color: white;
+}
+
+.nav_logo{
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    font-weight: var(--font-bold);
+}
+
+.nav_logo-image{
+    width: .75rem;
+}
+
+.nav_toggle{
+    display: inline-flex;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .nav_menu{
+        position: fixed;
+        background-color: var(--black-color);
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        transition: .3s;
+    }
+}
+
+/* Row gap disini baru dapat digunakan ketika displaynya flex */
+.nav_list{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 3rem;
+    padding-top: 9rem;
+}
+
+.nav_link{
+    font-size: var(--h2-font-size);
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.nav_link:hover{
+    color: white;
+}
+
+.nav_close{
+    color: white;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/* ====================== Show Menu ========================= */
+/* Right 0 agar menunya muncul karena sebelumnya menu dibuat -100% */
+.show-menu{
+    right: 0;
+}
+
+/* ================= Change background color =============== */
+/* Ketika discroll maka warna dari header (container menunya akan berubah) */
+.scroll-header{
+    background-color: var(--body-color);
+    box-shadow: 0 1px 4px hsla(0, 4%, 15%, .1);
+}
+
+/* Ketika scroll header terjadi maka nav_logo dan nav_toggle akan tetap keliatan */
+.scroll-header .nav_logo,
+.scroll-header .nav_toggle{
+    color: var(--title-color);
+}
+
+/* Warna dari nav logonya berubah (kontras dari warna containernya) */
+.scroll-header .nav_logo-image{
+    mix-blend-mode: difference;
+}
+/* ============================ Home ========================= */
+.home{
+    gap: 0;
+}
+
+/* membuat warna background secara linear dengan sudut 160 deg dan abu2 untuk yang di atas dan hitam untuk yang dibawah */
+.home_container{
+    padding: 7rem 0 2.5rem;
+    background: linear-gradient(160deg, 
+    hsla(206, 5%, 24%, 1) -4%, 
+    hsla(206, 12%, 12%, 1) 46%);
+}
+
+.home_content{
+    position: relative;
+}
+
+.home_image{
+    width: 100%;
+}
+
+.home_title,
+.home_data-title{
+    color: white;
+}
+
+.home_title{
+    font-size: var(--biggest-font-size);
+    margin-bottom: 1.5rem;
+}
+
+.home_title span{
+    color: var(--first-color);
+}
+
+.home_description{
+    margin-bottom: 2rem;
+}
+
+.home_data{
+    border-top: 1px solid var(--text-color);
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+}
+
+.home_data-number{
+    color: var(--first-color);
+    font-size: var(--h1-font-size);
+    margin-bottom: 1.5rem;
+}
+
+.home_data-title{
+    font-size: var(--h3-font-size);
+    margin-bottom: .5rem;
+}
+
+/* Harus dibuat left sama rightnya agar margin bisa berfungsi */
+.home_scroll{
+    position: absolute;
+    width: 100px;
+    left: 0;
+    right: 0;
+    bottom: -9.5rem;
+    margin: 0 auto;
+    animation: scroll 3s infinite;
+}
+
+/* Nama dari animation harus sesuai dengan nama keyframesnya */
+@keyframes scroll{
+    0%{
+        transform: translateY(0);
+    }
+    5%{
+        transform: translateY(-.5rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/* ==================== Button ======================= */
+.button{
+    display: inline-block;
+    padding: 1rem 1.75rem;
+    background-color: var(--black-color);
+    color: white;
+    font-size: var(--normal-font-size);
+    text-transform: uppercase;
+    border-radius: .25rem;
+}
+
+.specialty_button{
+    margin-left: 1.25rem;
+}
+
+.specialty_category{
+    display: grid;
+    margin-top: 4rem;
+    grid-template-columns: 200px;
+    justify-content: center;
+    row-gap: 2.5rem;
+}
+
+.specialty_img{
+    width: 100px;
+    margin-bottom: 1rem;
+    transition: .4s;
+}
+
+.specialty_group{
+    text-align: center;
+}
+
+.specialty_title{
+    font-size: var(--h2-font-size);
+    margin-bottom: .25rem;
+}
+
+/* Ketika kursor ke arah specialty_group (title/img/description) yang bergerak ke atas adalah imgnya. Jika dibuat hanya specialty_img:hover maka hanya kursor menyentuh img saja baru imgnya bergerak */
+.specialty_group:hover .specialty_img{
+    transform: translateY(-.25rem);
+}
+
+/* ======================= Products ========================= */
+.products_filters{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2.5rem 2rem;
+    margin-bottom: 3.5rem;
+}
+
+/* Products_line harus dibuat relative sehingga garis lurusnya keliatan */
+.products_line{
+    position: relative;
+}
+
+.products_line::before{
+    content: "";
+    width: 2px;
+    height: 40px;
+    position: absolute;
+    background-color: var(--text-color-light);
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.products_item{
+    cursor: pointer;
+}
+
+.products_title{
+    font-size: var(--h3-font-size);
+    color: var(--text-color);
+    margin-bottom: .5rem;
+}
+
+.products_stock{
+    font-size: var(--small-font-size);
+}
+
+.products_content{
+    grid-template-columns: 200px;
+    justify-content: center;
+}
+
+.products_card{
+    background-color: var(--container-color);
+    border-radius: .5rem;
+}
+
+.products_img{
+    width: 150px;
+    transition: .4s;
+}
+
+.products_shape{
+    background-color: var(--card-color);
+    border-radius: .5rem .5rem 0 0;
+    text-align: center;
+    padding: .25rem 0;
+}
+
+.products_data{
+    padding: 1rem 0 1.25rem 1rem;
+    position: relative;
+}
+
+.products_price{
+    font-size: var(--h2-font-size);
+}
+
+.products_name{
+    font-size: var(--normal-font-size);
+}
+
+/* inline-flex ada jarak antara bagian dalam dan luarnya dan bisa dibuat menyamping (inline) */
+/* position absolute terhadap card (containernya) */
+.products_button{
+    border-radius: 50%;
+    display: inline-flex;
+    padding: .625rem;
+    font-size: 1.25rem;
+    position: absolute;
+    right: 1rem;
+    top: -1.25rem;
+    box-shadow: 0 4px 12px hsla(206, 4%, 4%, .2);
+}
+
+.products_card:hover .products_img{
+    transform: translateY(-.25rem);
+}
+
+/* Mengaktifkan link products */
+.active-product .products_title{
+    color: var(--title-color);
+}
+
+/* ======================== Quality ========================= */
+.quality{
+    background-color: white;
+}
+
+.quality_content{
+    row-gap: 2.5rem;
+}
+
+.quality_img{
+    position: relative;
+    justify-self: center;
+}
+
+.quality_img-big,
+.quality_img-small{
+    border-radius: .5rem;
+}
+
+.quality_img-big{
+    width: 200px;
+}
+
+.quality_img-small{
+    width: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    transform: translateX(-4rem);
+}
+
+.quality_title,
+.quality_price{
+    font-size: var(--h1-font-size);
+}
+
+.quality_title{
+    margin-bottom: .75rem;
+}
+
+.quality_price{
+    margin-bottom: .25rem;
+}
+
+.quality_special{
+    font-size: var(--small-font-size);
+    display: block;
+    margin-bottom: .75rem;
+}
+
+.quality_description{
+    margin-bottom: 2.5rem;
+}
+
+.quality_buttons{
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+/* align items untuk menyesuaikan child dengan parentnya yaitu see more */
+.quality_button{
+    font-size: var(--normal-font-size);
+    text-transform: uppercase;
+    display: inline-flex;
+    color: var(--title-color);
+    align-items: center;
+    column-gap: .75rem;
+}
+
+/* Tanda panah pada quality_button */
+.quality_button i {
+    font-size: 1.25rem;
+    transition: .4s;
+}
+
+.quality_button:hover i {
+    transform: translateX(.25rem);
+}
+
+.logo{
+    background-color: white;
+}
+
+.logo_container{
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 2.5rem 2rem;
+    border-top: 1px solid var(--text-color);
+    padding-top: 2.5rem;
+}
+
+.logo_img{
+    opacity: .4;
+    mix-blend-mode: luminosity;
+    width: 80px;
+    transition: .4s;
+}
+
+.logo_img:hover{
+    opacity: .8;
+}
+
+/* ========================= Blog ========================== */
+.blog_container{
+    padding-bottom: 2rem;
+}
+
+.blog_content{
+    row-gap: 3rem;
+}
+
+.blog_images{
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.blog_img{
+    border-radius: .5rem;
+    width: 400px;
+}
+
+.blog_button{
+    display: inline-flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border-radius: .5rem 0 .5rem 0;
+    padding: 1.15rem;
+    font-size: 2rem;
+    color: var(--title-color);
+}
+
+.blog_button i{
+    transform: rotate(-35deg);
+    transition: .4s;
+}
+
+.blog_button:hover i{
+    transform: rotate(-35deg) translateX(.25rem);
+}
+
+.blog_title{
+    font-size: var(--h2-font-size);
+    margin-bottom: 1rem;
+}
+
+.blog_description{
+    margin-bottom: 1.5rem;
+}
+
+.blog_footer,
+.blog_reaction{
+    display: flex;
+}
+
+/* antara icon dan angka dengan icon dan angka yang lain */
+.blog_footer{
+    column-gap: 1.5rem;
+}
+
+/* antara icon dengan angka */
+.blog_reaction{
+    column-gap: .25rem;
+}
+
+.blog_reaction i{
+    font-size: 1.25rem;
+}
+
+/* angkanya */
+.blog_reaction span{
+    font-size: var(--small-font-size);
+}
+
+/* ====================== Footer ======================= */
+.footer{
+    background-color: var(--black-color);
+    padding: 4rem 0 2.5rem;
+}
+
+.footer_title{
+    color: white;
+    margin-bottom: 2rem;
+    font-size: var(--h1-font-size);
+}
+
+.footer_title span{
+    color: var(--first-color);
+}
+
+
+.footer_description{
+    margin-bottom: .75rem;
+}
+
+.footer_newsletter{
+    display: flex;
+    column-gap: .5rem;
+} 
+
+.footer_input{
+    border: none;
+    outline: none;
+    padding: 1.25rem 1rem;
+    border-radius: .25rem;
+    width: 70%;
+    color: var(--text-color);
+}
+
+.footer_button{
+    padding: .75rem;
+    font-size: 2rem;
+    border-radius: .25rem;
+    background-color: var(--first-color);
+    display: inline-flex;
+}
+
+.footer_button i {
+    transform: rotate(-30deg);
+    transition: .4s;
+}
+
+.footer_button:hover i{
+    transform: rotate(-30deg) translateX(.25rem);
+}
+
+.footer_content{
+    row-gap: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--text-color);
+}
+
+.footer_subtitle{
+    color: white;
+    font-size: var(--h2-font-size);
+    margin-bottom: .75rem;
+}
+
+.footer_img{
+    width: 1rem;
+}
+
+.footer_group{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.footer_social{
+    display: flex;
+    justify-content: center;
+    column-gap: 1.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.footer_social-link{
+    color: white;
+    transition: .4s;
+}
+
+.footer_social-link:hover{
+    color: var(--first-color);
+}
+
+.footer_copy{
+    font-size: var(--smaller-font-size);
+}
+
+/* ==================== Scroll Bar ========================== */
+/* Dapat dilakukan di google namun untuk firefox tidak bisa
+/* Bentuk untuk yang batasan scrollnya */
+::-webkit-scrollbar{
+    width: .6rem;
+    background-color: white;
+}
+
+/* Bentuk untuk yang scrollnya */
+::-webkit-scrollbar-thumb{
+    background-color: hsl(206, 4%, 80%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: hsl(206, 4%, 48%);
+}
+
+/* Fixed jika discroll dia bakal tetap ada */
+/* dibuat bottom -30% agar tidak keliatan */
+.scroll_up{
+    position: fixed;
+    right: 1rem;
+    bottom: -30%;
+    background-color: white;
+    box-shadow: 0 4px 12px hsla(0, 4%, 15%, .1);
+    padding: .35rem;
+    display: inline-flex;
+    font-size: 1.25rem;
+    border-radius: .15rem;
+    color: var(--title-color);
+    z-index: var(--z-tooltip);
+    opacity: .9;
+    transition: .4s;
+}
+
+.scroll_up:hover{
+    transform: translateY(-.25rem);
+    opacity: 1;
+}
+
+/* show scroll */
+.show-scroll{
+    bottom: 3rem;
+}
+
+/* active link (java)*/
+.active-link{
+    color: white;
+}
+
+/* =================== Breakoints ======================= */
+/* For small devices */
+@media screen and (max-width: 320px) {
+    .container{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .quality_img-small{
+        transform: translateX(-5.8rem);
+    }
+
+    .quality_buttons{
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+}
+
+/* for medium devices */
+@media screen and (min-width: 576px){
+    .specialty_category{
+        grid-template-columns: repeat(2,200px);
+        column-gap: 3rem;
+    }
+
+    .cookies{
+        transform: translateY(2.3rem);
+    }
+
+    .products_content{
+        grid-template-columns: repeat(2, 200px);
+    }
+
+    .tofu{
+        height: 147px;
+    }
+
+    .blog_content{
+        grid-template-columns: 450px;
+        justify-content: center;
+    }
+
+    .footer_newsletter{
+        width: 350px;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .section{
+        padding: 7rem 0 2rem;
+    }
+
+    .nav{
+        height: calc(var(--header-height) + 1.5rem);
+    }
+
+    .nav_close,
+    .nav_toggle{
+        display: none;
+    }
+
+    .nav_list{
+        padding-top: 0;
+        flex-direction: row;
+        column-gap: 4rem;
+    }
+
+    .nav_link{
+        text-transform: initial;
+        font-size: var(--normal-font-size);
+        position: relative;
+    }
+
+    .nav_link::after{
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 12px;
+        background-color: var(--text-color-light);
+        transform: translateX(1.25rem);
+        bottom: 0;
+        right: 0;
+        margin: auto 0;
+    }
+
+        /* Ketika discroll maka warna dari navnya akan berubah */
+    .scroll-header .nav_link{
+        color: var(--text-color);
+    }
+
+        /* Warna pada nav yang merupakan link yang active */
+    .scroll-header .active-link{
+        color: var(--title-color);
+    }
+
+    .scroll-header .active-link::after{
+        background-color: var(--title-color);
+    }
+
+    .home{
+        grid-template-columns: repeat(2,1fr);
+        align-items: stretch;
+        position: relative;
+    }
+
+    .home_content{
+        position: initial;
+    }
+
+    .home_scroll{
+        bottom: 0;
+        top: 0;
+        margin: auto;
+    }
+
+    .products_filters{
+        grid-template-columns: repeat(3,200px);
+    }
+
+    .quality_content,
+    .footer_content{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+/* For large devices */
+@media screen and (min-width: 1040px) {
+    /* Membuat tulisannya menjadi paling kiri */
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Membuat tulisan menjadi ke tengah lagi ketika container/web diperluas ia akan tetap ditengah dan tidak bergerak*/
+    .home_content{
+        max-width: 400px;
+        margin-right: 7rem;
+        margin-left: auto;
+    }
+
+    .section_title{
+        padding-right: 15rem;
+        padding-left: 1.75rem;
+    }
+    /* Garis warna orange */
+    .section_title::before{
+        height: 1.75rem;
+        width: .25rem;
+        top: .75rem;
+    }
+
+    .specialty_box{
+        display: grid;
+        grid-template-columns: 2fr .5fr;
+    }
+
+    /* Membuat tulisannya menjadi ke kiri semua*/
+    .specialty_group{
+        text-align: initial;
+    }
+
+    .specialty_category{
+        grid-template-columns: repeat(3, 250px);
+        column-gap: 7rem;
+    }
+
+    .coffee_togo{
+        transform: translateY(-2.6rem);
+    }
+
+    .specialty_line,
+    .specialty_line-cookies{
+        position: relative;
+    }
+
+    .specialty_line::before,
+    .specialty_line-cookies::before{
+        content: "";
+        width: 1px;
+        height: 120px;
+        position: absolute;
+        background-color: var(--text-color-light);
+        top: 0;
+        right: -5rem;
+        bottom: 0;
+        margin: auto 0;
+    }
+
+    .specialty_line-cookies{
+        top: -5.7rem;
+    }
+
+    .specialty_img{
+        width: 80px;
+        margin-bottom: 1.5rem;
+    }
+
+    .products_filters{
+        margin: 4rem 0 5.5rem;
+        column-gap: 4rem;
+    }
+
+    /* Justify-content membuat gambar menjadi lebih ke kiri sehingga sesuai dengan products filtersnya */
+    .products_content{
+        grid-template-columns: repeat(3, 262px);
+        justify-content: initial;
+        column-gap: 5rem;
+    }
+
+    .products_card{
+        border-radius: .75rem;
+    }
+
+    .products_img{
+        width: 200px;
+    }
+
+    .products_shape{
+        padding:  2rem 0;
+        border-radius: .75rem .75rem 0 0;
+    }
+
+
+/* Menyesuaikan ukuran dari gambarnya oleh karena itu sebaiknya pilih gambar dengan height dan width yang sama */
+    .shape_fried-tofu,
+    .shape_fried-tempeh,
+    .shape_black-coffee,
+    .shape_coffee-milk,
+    .shape_mocha-coffee,
+    .shape_caramel-macchiato,
+    .shape_cheese-cake,
+    .shape_chocolate-cake,
+    .shape_bika-ambon,
+    .shape_lapis-legit,
+    .shape_kue-putu
+    {
+        height: 15.5rem;
+    }
+
+    .fried-tofu_img,
+    .mocha-coffee_img,
+    .caramel-macchiato_img,
+    .cheese-cake_img,
+    .chocolate-cake_img,
+    .bika-ambon_img,
+    .lapis-legit_img,
+    .kue-putu_img
+    {
+        height: 170px;
+        width: 280px;
+    }
+
+    .coffee-milk_img{
+        width: 300px;
+        height: 155px;
+    }
+
+    .fried-tempeh_img{
+        height: 250px;
+        width: 220px;
+    }
+
+    .black-coffee_img{
+        transform: translateX(-1.85rem);
+    }
+
+    .coffee-milk_img{
+        transform: translateY(1.6rem);
+    }
+
+    .mocha-coffee_img{
+        transform: translateX(-1.2rem);
+    }
+
+    .caramel-macchiato_img{
+        transform: translateX(-.2rem);
+    }
+
+    .cheese-cake_img{
+        transform: translateX(2rem);
+    }
+
+    .chocolate-cake_img{
+        transform: translateX(.5rem);
+    }
+    
+    .bika-ambon_img{
+        transform: translateY(.4rem);
+    }
+
+    .lapis-legit_img{
+        transform: translateX(-1.3rem);
+    }
+
+    .fried-tempeh_img{
+        transform: translateY(-2rem);
+    }
+
+    .products_data{
+        padding: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .products_name{
+        font-size: var(--h3-font-size);
+    }
+
+    .products_button{
+        font-size: 1.5rem;
+        padding: .75rem;
+        right: 1.5rem;
+        top: -1.5rem;
+    }
+
+    .quality_content{
+        column-gap: 6rem;
+    }
+
+    .quality_img{
+        margin-top: 2rem;
+    }
+
+    .quality_img-big{
+        width: 428px;
+    }
+
+    .quality_img-small{
+        width: 153px;
+        transform: translateX(-7rem);
+    }
+
+    .quality_title{
+        margin-bottom: 1.5rem;
+    }
+
+    .quality_special{
+        margin-bottom: 1rem;
+    }
+
+    .logo_container{
+        grid-template-columns: repeat(5, 1fr);
+        padding: 3.5rem 0;
+    }
+
+    .logo_img{
+        width: 110px;
+    }
+
+    .blog_container{
+        padding-bottom: 5rem;
+    }
+
+    .blog_content{
+        grid-template-columns: repeat(2, 450px);
+        column-gap: 5rem;
+        padding-top: 2rem;
+    }
+
+    .footer_title{
+        font-size: var(--h1-font-size);
+    }
+
+    .footer_content{
+        grid-template-columns: repeat(4, max-content);
+        column-gap: 4rem;
+        padding-bottom: 5.5rem;
+    }
+
+    .footer_group{
+        margin-top: 3rem;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer_social{
+        column-gap: 2rem;
+    }
+
+    .footer_social-link{
+        font-size: 1.5rem;
+    }
+
+    .scroll_up{
+        right: 3rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .home_container{
+        padding-top: 10rem;
+    }
+
+    .home_data{
+        padding-top: 3rem;
+    }
+
+    .home_title{
+        margin-bottom: 2rem;
+    }
+
+    .home_description{
+        margin-bottom: 3rem;
+    }
+
+    /* For larger screen */
+    /* Alternative code */
+    @media screen and (min-width: 1700px){
+        .home{
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
